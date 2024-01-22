@@ -3,6 +3,9 @@ Python - Hello, World
 ### Description
 First introduction to scripting in Python 3, and basic use of strings.
 
+Write a Python script that prints exactly `"Programming is like building a multilingual puzzle`, followed by a new line.
+* Use the function `print`
+
 File(s): [`2-print.py`](./2-print.py)
 
 Complete the provided source code in order to print the integer stored in the variable `number`, followed by `Battery street`, followed by a new line.
@@ -60,7 +63,3 @@ Write a Python script that prints “The Zen of Python”, by Tim Peters, follow
 * Your script should be maximum 98 characters long (please check with `wc -m 9-easter_egg.py`)
 
 File(s): [`9-easter_egg.py`](./9-easter_egg.py)
-
-Write a function in C that checks if a singly linked list has a cycle in it.
-* Prototype: `int check_cycle(listint_t *list);`
-* Return: 0 if there is no cycle, 1 if there is a cycle
