@@ -1,0 +1,37 @@
+Tests for the ``print_square`` module
+================================
+
+>>> print_square = __import__("4-print_square").print_square
+
+Tests:
+    Test - size is a positive integer
+    >>> print_square(3)
+    ###
+    ###
+    ###
+
+    Test - size is a negative integer
+    >>> print_square(-3)
+    Traceback (most recent call last):
+    TypeError: size must be >= 0
+
+    Test - size a float greater than or equal to zero
+    >>> print_square(3.3)
+    ###
+    ###
+    ###
+
+    Test - size a float less than zero
+    >>> print_square(-3.3)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    Test - size is a not integer and is not a float
+    >>> print_square("Three")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+    Test - size is missing
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
