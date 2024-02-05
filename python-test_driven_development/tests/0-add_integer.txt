@@ -1,0 +1,51 @@
+Tests for the ``add_integer`` module
+====================================
+
+Using ``add_integer``
+---------------------
+
+First import ``add_integer`` from ``0-add_integer`` file:
+	>>> add_integer = __import__("0-add_integer").add_integer
+
+Tests:
+	Test - a and b are integers
+	>>> add_integer(1, 2)
+	3
+
+	Test - a and b are floats
+	>>> add_integer(1.1, 2.2)
+	3
+
+	Test - a is a string
+	>>> add_integer("hello", 2)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+	Test - b is a string
+	>>> add_integer(1, "hello")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
+
+	Test - missing one argument
+	>>> add_integer(1)
+	99
+
+	Test - missing both arguments
+	>>> add_integer()
+	Traceback (most recent call last):
+	...
+	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+	Test - one of the arguments is NaN
+	>>> add_integer(1, float("nan"))
+	Traceback (most recent call last):
+	...
+	ValueError: cannot convert float NaN to integer
+
+	Test - one of the arguments is infinity
+	>>> add_integer(1, float("inf"))
+	Traceback (most recent call last):
+	...
+	OverflowError: cannot convert float infinity to integer
