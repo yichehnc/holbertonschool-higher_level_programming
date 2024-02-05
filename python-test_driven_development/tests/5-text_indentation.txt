@@ -1,0 +1,27 @@
+Tests for ``text_indentation`` function
+
+>>> text_indentation = __import__("5-text_indentation").text_indentation
+
+Tests:
+	Test - text is a string
+	>>> text_indentation("one.two?three:")
+	one.
+	<BLANKLINE>
+	two?
+	<BLANKLINE>
+	three:
+	<BLANKLINE>
+
+	Test - text is not a string
+	>>> text_indentation(12345)
+	Traceback (most recent call last):
+	TypeError: text must be a string
+
+	Tests - text is string with only spaces
+	>>> text_indentation("		")
+	<BLANKLINE>
+
+	Test - no argument supplied
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
