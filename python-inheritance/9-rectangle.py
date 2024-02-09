@@ -30,5 +30,3 @@ class Rectangle(BaseGeometry):
         Returns a description of the rectangle
         """
         return (f"[{type(self).__name__}] {self.__width}/{self.__height}")
-
-    
