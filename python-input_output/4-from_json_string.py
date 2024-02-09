@@ -5,11 +5,11 @@ import json
 
 def from_json_string(my_str):
     """
-    Convents a JSON string to a Python object 
+    Convents a JSON string to a Python object
 
     Args:
         my_str (str): the string to convert to JSON
-    
+
     Returns:
         obj: a python object
     """
