@@ -1,0 +1,82 @@
+The ``base_geometry`` module
+==========================
+
+Using ``BaseGeometry``
+---------------------
+
+First import ``BaseGeometry`` from the ``7-base_geometry`` file:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Tests:
+
+    Test: Making an instance of BaseGeometry
+    >>> bg = BaseGeometry()
+
+    Test: Normal Test case, no error
+    >>> bg.integer_validator("age", 2)
+
+    Test: Value is a negative number
+    >>> bg.integer_validator("age", -2)
+    Traceback (most recent call last):
+    ...
+    ValueError:"age must be greater than 0
+
+    Test: Value is zero
+    >>> bg.integer_validator("age", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError:"age must be greater than 0
+
+    Test: Value is a string
+    >>> bg.integer_validator("age", "Twice")
+    Traceback (most recent call last):
+    ...
+    TypeError:"age must be an integer
+
+    Test: No arguments passed
+    >>> bg.integer_validator()
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+    Test: One arguments passed
+    >>> bg.integer_validator("age", )
+    Traceback (most recent call last):
+    ...
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+    Test: Value is a list
+    >>> bg.integer_validator("age", [2])
+    Traceback (most recent call last):
+    ...
+    TypeError:"age must be an integer
+
+    Test: Value is a tuple
+    >>> bg.integer_validator("age", (2,))
+    Traceback (most recent call last):
+    ...
+    TypeError:"age must be an integer
+
+    Test: Value is a set
+    >>> bg.integer_validator("age", {2, 1})
+    Traceback (most recent call last):
+    ...
+    TypeError:"age must be an integer
+
+    Test: Value is None
+    >>> bg.integer_validator("age", None)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    Test: Value is True
+    >>> bg.integer_validator("age", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: age must be an integer
+
+    Test: Get Area
+    >>> bg.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
