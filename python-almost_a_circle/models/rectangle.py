@@ -25,7 +25,7 @@ class Rectangle(Base):
         Retrieves itself
         """
         return self.__width
-    
+
     @width.setter
     def width(self, width):
         """
@@ -39,7 +39,7 @@ class Rectangle(Base):
         Retrieves itself
         """
         return self.__height
-    
+
     @height.setter
     def height(self, height):
         """
