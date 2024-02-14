@@ -136,6 +136,7 @@ class Rectangle(Base):
                 self.y = value
 
         for key, value in kwargs.items():
+            # print (kwargs)
             # key in dictionary is a string
             if key == 'id':
                 self.id = value
@@ -147,3 +148,11 @@ class Rectangle(Base):
                 self.x = value
             if key == 'y':
                 self.y = value
+
+    def to_dictionary(self):
+        """
+        Returns a dictionary representation of a Rectangle
+        """
+        # make dictionary from instances
+        return {'id': self.id, 'x': self.x, 'y': self.y,
+                'height': self.height, 'width': self.width}
