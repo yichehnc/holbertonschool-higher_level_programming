@@ -99,10 +99,17 @@ class Rectangle(Base):
 
     def display(self):
         """
-        Prints a rectangle of '#' in stdout
+        Prints the rectangle with #
         """
+        for i in range(self.y):
+            print()
         for i in range(self.height):
-            print("#" * self.width)
+            for i in range(self.x):
+                print(' ', end='')
+            for i in range(self.width):
+                print('#', end='')
+            print()
+
 
     def __str__(self):
         """
@@ -111,3 +118,4 @@ class Rectangle(Base):
         """
         return ("[Rectangle] ({}) {}/{} - {}/{}".
                 format(self.id, self.x, self.y, self.width, self.height))
+
