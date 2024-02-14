@@ -103,3 +103,11 @@ class Rectangle(Base):
         """
         for i in range(self.height):
             print("#" * self.width)
+
+    def __str__(self):
+        """
+        Returns a string representation of the rectangle
+        object that can be used to create a normal rectangle
+        """
+        return ("[Rectangle] ({}) {}/{} - {}/{}".
+                format(self.id, self.x, self.y, self.width, self.height))
