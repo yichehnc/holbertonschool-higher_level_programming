@@ -110,7 +110,6 @@ class Rectangle(Base):
                 print('#', end='')
             print()
 
-
     def __str__(self):
         """
         Returns a string representation of the rectangle
@@ -118,4 +117,3 @@ class Rectangle(Base):
         """
         return ("[Rectangle] ({}) {}/{} - {}/{}".
                 format(self.id, self.x, self.y, self.width, self.height))
-
