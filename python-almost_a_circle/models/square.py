@@ -24,13 +24,6 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
-        """
-        Size value validation inherits from Rectangle
-        """
-        if type(value) is not int:
-            raise TypeError("width must be an integer")
-        if value <= 0:
-            raise ValueError("width must be > 0")
         self.width = value
         self.height = value
 
@@ -41,3 +34,29 @@ class Square(Rectangle):
         """
         return ("[Square] ({}) {}/{} - {}".
                 format(self.id, self.x, self.y, self.width))
+
+    def update(self, *args, **kwargs):
+        """
+        Assign a key/value arguments to attributes
+        """
+
+        for i, value in enumerate(args):
+            if i == 0:
+                self.id = value
+            elif i == 1:
+                self.size = value
+            elif i == 2:
+                self.x = value
+            elif i == 3:
+                self.y = value
+
+        for key, value in kwargs.items():
+            # key in dictionary is a string
+            if key == 'id':
+                self.id = value
+            if key == 'size':
+                self.size = value
+            if key == 'x':
+                self.x = value
+            if key == 'y':
+                self.y = value
