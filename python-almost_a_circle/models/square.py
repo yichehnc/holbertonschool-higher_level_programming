@@ -15,6 +15,25 @@ class Square(Rectangle):
         """
         super().__init__(size, size, x, y, id)
 
+    @property
+    def size(self):
+        """
+        Size inherits from Rectangle
+        """
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """
+        Size value validation inherits from Rectangle
+        """
+        if type(value) is not int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+        self.width = value
+        self.height = value
+
     def __str__(self):
         """
         Returns a string representation of the square
