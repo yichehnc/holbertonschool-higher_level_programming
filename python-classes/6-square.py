@@ -40,14 +40,17 @@ class Square:
     @size.setter
     def size(self, value):
         """
-        Determines whether the size value for the square is appropriate
+        Setter method for setting the size of the square.
 
+        Parameters:
+        - value: New size value
         """
-        if type(value) is not int:
+        if not isinstance(size, int):
             raise TypeError("size must be an integer")
-        if value < 0:
+        elif size < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
+        else:
+            self.__size = size
 
     @property
     def position(self):
@@ -60,7 +63,7 @@ class Square:
     def position(self, value):
         """
         Setter method for setting the position of the square.
-        
+
         Parameters:
         value: New position value (tuple of 2 positive integers)
         """
