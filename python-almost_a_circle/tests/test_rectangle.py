@@ -75,6 +75,19 @@ class TestRectangle(unittest.TestCase):
             with self.assertRaises(ValueError):
                 rectangle = Rectangle(1, 2, 3, -4)
 
+    def test_rectangle_string(self):
+        """
+        Test for string arguments
+        """
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle("1", 2, 3, 4)
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(1, "2", 3, 4)
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(1, 2, "3", 4)
+        with self.assertRaises(TypeError):
+            rectangle = Rectangle(1, 2, 3, "4")
+
     def test_rectangle_zero(self):
             """
             Test for argument is 0
