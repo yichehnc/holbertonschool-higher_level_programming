@@ -150,3 +150,42 @@ class TestRectangle(unittest.TestCase):
         rectangle_1 = Rectangle(1, 2, 3, 4, 5)
         output_1 = {'width': 1, 'height': 2, 'x': 3, 'y': 4, 'id': 5}
         self.assertEqual(rectangle_1.to_dictionary(), output_1)
+
+    def test_rectangle_create(self):
+        """
+        Test for correct rectangle instance creation
+        """
+        rectangle = Rectangle.create(**{ 'height': 2})
+        self.assertEqual(rectangle.height, 2)
+
+    def test_rectangle_save_to_file_empty(self):
+        """
+        Test for a rectangle save to file where read file contents are empty
+        """
+        Rectangle.save_to_file([])
+        with open("Rectangle.json", 'r') as f:
+             rectangle_1 = f.read()
+        self.assertEqual(rectangle_1, '[]')
+        os.remove("Rectangle.json")
+
+    def test_rectangle_save_to_file_none(self):
+        """
+        Test for a rectangle save to file where read file contents are None
+        """
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", 'r') as f:
+            rectangle_1 = f.read()
+        self.assertEqual(rectangle_1, '[]')
+        os.remove("Rectangle.json")
+
+    def test_rectangle_load(self):
+        """
+        Test for loading of file and expected rectangle return
+        """
+        rectangle_1 = Rectangle(1, 2, 3, 4, 5)
+        output_1 = '[Rectangle] (5) 3/4 - 1/2'
+        list_rectangle_1_input = [rectangle_1]
+        Rectangle.save_to_file(list_rectangle_1_input)
+        list_rectangle_1_output = Rectangle.load_from_file()
+        self.assertEqual(str(list_rectangle_1_output[0]), output_1)
+        os.remove("Rectangle.json")
