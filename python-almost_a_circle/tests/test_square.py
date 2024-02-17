@@ -151,25 +151,28 @@ class TestSquare(unittest.TestCase):
         square_1 = Square.create(**{ 'size': 2 })
         self.assertEqual(square_1.size, 2)
 
-    def test_square_save_to_file_empty(self):
+    def test_square_save_to_file(self):
         """
         Test for a Square save to file where read file contents are empty
         """
-        Square.save_to_file([])
-        with open("Square.json", 'r') as f:
-             square_1 = f.read()
-        self.assertEqual(square_1, '[]')
-        os.remove("Square.json")
+        filename = "Square.json"
+        if (os.path.isfile(filename)):
+            os.remove(filename)
 
-    def test_square_save_to_file_empty(self):
-        """
-        Test for a Square save to file where read file contents are empty
-        """
         Square.save_to_file(None)
-        with open("Square.json", 'r') as f:
-             square_1 = f.read()
-        self.assertEqual(square_1, '[]')
-        os.remove("Square.json")
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
+        self.assertEqual(content, "[]")
+
+        Square.save_to_file([])
+        content = ""
+        with open(filename, "r", encoding="utf-8") as f:
+            content = f.read()
+        os.remove(filename)
+        self.assertEqual(content, "[]")
+
 
     def test_square_load(self):
         """
