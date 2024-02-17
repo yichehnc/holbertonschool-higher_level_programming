@@ -25,7 +25,7 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(square_1.x, 2)
         self.assertEqual(square_1.y, 3)
         self.assertEqual(square_1.id, 4)
-        
+
     def test_square_missing_arguments(self):
             """
             Test for missing arguments
@@ -76,14 +76,14 @@ class TestSquare(unittest.TestCase):
             """
             with self.assertRaises(ValueError):
                 square_1 = Square(0, 2)
-                
+
     def test_square_area(self):
         """
         Test for correct area calculation
         """
         square_1 = Square(2)
         self.assertEqual(square_1.area(), 4)
-        
+
     def test_square_display(self):
         """
         Test for correct Square display
@@ -119,3 +119,66 @@ class TestSquare(unittest.TestCase):
         square_1.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(captured_output.getvalue(), display_1)
+
+    def test_square_str_representation(self):
+        """
+        Test for correct string representation
+        """
+        square_1 = Square(1, 2, 3, 4)
+        output_1 = "[Square] (4) 2/3 - 1"
+        self.assertEqual(str(square_1), output_1)
+
+    def test_square_update(self):
+        """
+        Test for correct update arguments
+        """
+        square_1 = Square(1, 2, 3, 4)
+        square_1.update(5)
+        self.assertEqual(square_1.id, 5)
+
+    def test_square_dictionary(self):
+        """
+        Test for correct dictionary representation
+        """
+        square_1 = Square(1, 2, 3, 4)
+        output_1 = {'size': 1, 'x': 2, 'y': 3, 'id': 4}
+        self.assertEqual(square_1.to_dictionary(), output_1)
+
+    def test_square_create(self):
+        """
+        Test for correct Square instance creation
+        """
+        square_1 = Square.create(**{ 'size': 2 })
+        self.assertEqual(square_1.size, 2)
+
+    def test_square_save_to_file_empty(self):
+        """
+        Test for a Square save to file where read file contents are empty
+        """
+        Square.save_to_file([])
+        with open("Square.json", 'r') as f:
+             square_1 = f.read()
+        self.assertEqual(square_1, '[]')
+        os.remove("Square.json")
+
+    def test_square_save_to_file_empty(self):
+        """
+        Test for a Square save to file where read file contents are empty
+        """
+        Square.save_to_file(None)
+        with open("Square.json", 'r') as f:
+             square_1 = f.read()
+        self.assertEqual(square_1, '[]')
+        os.remove("Square.json")
+
+    def test_square_load(self):
+        """
+        Test for loading of file and expected Square return
+        """
+        square_1 = Square(1, 2, 3, 4)
+        output_1 = '[Square] (4) 2/3 - 1'
+        list_square_1_input = [square_1]
+        Square.save_to_file(list_square_1_input)
+        list_square_1_output = Square.load_from_file()
+        self.assertEqual(str(list_square_1_output[0]), output_1)
+        os.remove("Square.json")
