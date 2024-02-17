@@ -41,16 +41,15 @@ class Square:
     def size(self, value):
         """
         Setter method for setting the size of the square.
-
+		
         Parameters:
         - value: New size value
         """
-        if not isinstance(size, int):
+        if type(value) is not int:
             raise TypeError("size must be an integer")
-        elif size < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = size
+        self.__size = value
 
     @property
     def position(self):
@@ -63,7 +62,7 @@ class Square:
     def position(self, value):
         """
         Setter method for setting the position of the square.
-
+        
         Parameters:
         value: New position value (tuple of 2 positive integers)
         """
@@ -96,6 +95,5 @@ class Square:
             for i in range(self.__position[1]):
                 print()
             for j in range(self.__size):
-                print("_" * self.__position[0], end="")
-                print("#" * self.__size, end="")
-                print()
+                print(" " * self.__position[0], end="")
+                print("#" * self.__size)
