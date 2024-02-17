@@ -126,3 +126,27 @@ class TestRectangle(unittest.TestCase):
         rectangle_1.display()
         sys.stdout = sys.__stdout__
         self.assertEqual(captured_output.getvalue(), display_1)
+
+    def test_rectangle_str_representation(self):
+        """
+        Test for correct srting representation
+        """
+        rectangle_1 = Rectangle(1, 2, 3, 4, 99)
+        output_1 = "[Rectangle] (99) 3/4 - 1/2"
+        self.assertEqual(str(rectangle_1), output_1)
+
+    def test_rectangle_update(self):
+        """
+        Test for correct update arguments
+        """
+        rectangle_1 = Rectangle(1, 2, 3, 4, 5)
+        rectangle_1.update(6)
+        self.assertEqual(rectangle_1.id, 6)
+
+    def test_rectangle_dictionary(self):
+        """
+        Test for correct dictionary representation
+        """
+        rectangle_1 = Rectangle(1, 2, 3, 4, 5)
+        output_1 = {'width': 1, 'height': 2, 'x': 3, 'y': 4, 'id': 5}
+        self.assertEqual(rectangle_1.to_dictionary(), output_1)
