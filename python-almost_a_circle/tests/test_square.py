@@ -4,7 +4,7 @@ Unittest for Square module
 """
 import unittest
 from models.base import Base
-from models.square import square
+from models.rectangle import Rectangle
 from models.square import Square
 from io import StringIO
 import io
@@ -76,3 +76,46 @@ class TestSquare(unittest.TestCase):
             """
             with self.assertRaises(ValueError):
                 square_1 = Square(0, 2)
+                
+    def test_square_area(self):
+        """
+        Test for correct area calculation
+        """
+        square_1 = Square(2)
+        self.assertEqual(square_1.area(), 4)
+        
+    def test_square_display(self):
+        """
+        Test for correct Square display
+        """
+        square_1 = Square(2)
+        display_1 = "##\n##\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        square_1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), display_1)
+
+    def test_square_display_x(self):
+        """
+        Test for correct Square display with x
+        """
+        square_1 = Square(2, 1)
+        display_1 = " ##\n ##\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        square_1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), display_1)
+
+    def test_square_display_x_and_y(self):
+        """
+        Test for correct Square display with x and y offset
+        """
+        square_1 = Square(2, 1, 1)
+        display_1 = "\n ##\n ##\n"
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        square_1.display()
+        sys.stdout = sys.__stdout__
+        self.assertEqual(captured_output.getvalue(), display_1)
