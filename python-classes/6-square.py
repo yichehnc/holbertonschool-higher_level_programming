@@ -59,18 +59,22 @@ class Square:
     @position.setter
     def position(self, value):
         """
-        Puts the new position
+        Setter method for setting the position of the square.
+        
+        Parameters:
+        value: New position value (tuple of 2 positive integers)
         """
         error_message = "position must be a tuple of 2 positive integers"
+        if not isinstance(value, tuple):
+            raise TypeError(error_message)
         if type(value) is not tuple:
             raise TypeError(error_message)
         if len(value) != 2:
             raise TypeError(error_message)
-        for number in value:
-            if type(number) is not int:
-                raise TypeError(error_message)
-            if number < 0:
-                raise TypeError(error_message)
+        if (not isinstance(value[0], int)) or (not isinstance(value[1], int)):
+            raise TypeError(error_message)
+        if value[0] < 0 or value[1] < 0:
+            raise TypeError(error_message)
         self.__position = value
 
     def area(self):
@@ -81,14 +85,14 @@ class Square:
 
     def my_print(self):
         """
-        Prints the square with desired size
+        Prints the square with '#' character based on size and position.
         """
         if self.__size == 0:
             print()
         else:
             for i in range(self.__position[1]):
                 print()
-            for i in range(self.__size):
+            for j in range(self.__size):
                 print("_" * self.__position[0], end="")
                 print("#" * self.__size, end="")
                 print()
