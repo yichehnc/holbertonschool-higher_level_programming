@@ -92,5 +92,5 @@ class Rectangle:
         for i in range(self.__height):
             if (i > 0):
                 result += '\n'
-                result += ("#" * self.__width)
+            result += ("#" * self.__width)
         return result
