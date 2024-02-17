@@ -41,7 +41,7 @@ class Square:
     def size(self, value):
         """
         Setter method for setting the size of the square.
-		
+
         Parameters:
         - value: New size value
         """
@@ -62,7 +62,7 @@ class Square:
     def position(self, value):
         """
         Setter method for setting the position of the square.
-        
+
         Parameters:
         value: New position value (tuple of 2 positive integers)
         """
